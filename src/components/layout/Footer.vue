@@ -7,8 +7,8 @@
             AE
           </div>
           <div>
-            <p class="font-medium text-zinc-200">Ahmed Ezz</p>
-            <p class="text-xs text-zinc-500">Backend Software Engineer & Educator</p>
+            <p class="font-medium text-zinc-200">{{ siteData.profile.name }}</p>
+            <p class="text-xs text-zinc-500">{{ siteData.profile.title }}</p>
           </div>
         </div>
 
@@ -18,17 +18,17 @@
           <RouterLink to="/categories" class="hover:text-zinc-200 transition-colors">Categories</RouterLink>
           <RouterLink to="/about" class="hover:text-zinc-200 transition-colors">About</RouterLink>
           <RouterLink to="/contact" class="hover:text-zinc-200 transition-colors">Contact</RouterLink>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">GitHub</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">LinkedIn</a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">YouTube</a>
+          <a :href="siteData.profile.links.github" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">GitHub</a>
+          <a :href="siteData.profile.links.linkedin" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">LinkedIn</a>
+          <a :href="siteData.profile.links.youtube" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 transition-colors">YouTube</a>
           <RouterLink to="/admin/login" class="text-zinc-600 hover:text-zinc-400 transition-colors">Admin</RouterLink>
         </div>
       </div>
 
       <div class="mt-8 pt-8 border-t border-dark-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-        <p>© {{ new Date().getFullYear() }} Ahmed Ezz. Designed for engineering depth & clean architecture.</p>
+        <p>© {{ new Date().getFullYear() }} {{ siteData.profile.name }}. {{ siteData.site.footer.description }}</p>
         <p class="flex items-center gap-1.5">
-          <span>Zero-Cost Serverless Ready</span>
+          <span>{{ siteData.site.footer.hostingBadge }}</span>
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         </p>
       </div>
@@ -37,4 +37,5 @@
 </template>
 
 <script setup lang="ts">
+import siteData from '@/data'
 </script>

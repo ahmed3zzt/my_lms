@@ -11,15 +11,15 @@
         <div class="md:col-span-8 space-y-6">
           <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-mono text-emerald-400">
             <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Production Backend Engineering & Systems
+            {{ siteData.site.hero.badge }}
           </div>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
-            Engineering Deep Dives for <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Backend Engineers</span>
+            {{ siteData.site.hero.heading }} <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">{{ siteData.site.hero.headingHighlight }}</span>
           </h1>
 
           <p class="max-w-2xl text-base sm:text-lg text-zinc-400 leading-relaxed">
-            Welcome! I'm <strong class="text-zinc-200">Ahmed Ezz</strong>. This platform provides companion lesson notes, copyable production code, architectural diagrams, and downloadable resources for my YouTube video tutorials.
+            {{ siteData.site.hero.description }}
           </p>
 
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
@@ -34,7 +34,7 @@
             </RouterLink>
 
             <a
-              href="https://youtube.com"
+              :href="siteData.profile.links.youtube"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 rounded-xl border border-dark-border bg-dark-card px-5 py-3 text-sm font-medium text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
@@ -56,17 +56,21 @@
                 <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
                 <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
               </div>
-              <span>bash - engineer@ahmedezz</span>
+              <span>bash - {{ siteData.site.terminal.user }}</span>
             </div>
             <div class="mt-4 space-y-2 text-zinc-300">
               <p><span class="text-emerald-400">$</span> whoami</p>
-              <p class="text-zinc-400">Ahmed Ezz (Backend Engineer)</p>
+              <p class="text-zinc-400">{{ siteData.site.terminal.whoami }}</p>
               <p><span class="text-emerald-400">$</span> cat interests.txt</p>
-              <p class="text-zinc-400">• Distributed Systems (Raft, Paxos)<br>• Linux Kernel & Sockets<br>• PostgreSQL Internals & MVCC<br>• Clean Architecture in Go</p>
+              <p class="text-zinc-400">
+                <span v-for="(interest, idx) in siteData.site.terminal.interests" :key="idx" class="block">
+                  • {{ interest }}
+                </span>
+              </p>
               <p class="pt-2"><span class="text-emerald-400">$</span> ./start_learning.sh</p>
               <p class="text-emerald-400 flex items-center gap-2">
                 <span class="inline-block w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span>
-                Ready to level up your engineering skills...
+                {{ siteData.site.terminal.status }}
               </p>
             </div>
           </div>
@@ -158,12 +162,12 @@
         <div class="rounded-3xl border border-dark-border bg-gradient-to-b from-[#11131a] to-[#0d1117] p-8 sm:p-12">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div class="md:col-span-8 space-y-4">
-              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">About Ahmed Ezz</span>
+              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">About {{ siteData.profile.name }}</span>
               <h3 class="text-2xl sm:text-3xl font-bold text-white">
-                Teaching Clean Architecture, Distributed Systems & Low-Level Engineering
+                {{ siteData.profile.shortBio }}
               </h3>
               <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                I am a Backend Software Engineer passionate about Linux, high-performance databases, scalable distributed consensus, and crafting clean, maintainable systems. Everything on this platform is crafted to provide clear, practical knowledge without fluff.
+                {{ siteData.profile.aboutPreview }}
               </p>
               <div class="pt-2 flex flex-wrap gap-4">
                 <RouterLink
@@ -184,8 +188,8 @@
             <div class="md:col-span-4 flex justify-center">
               <div class="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
-                  alt="Ahmed Ezz"
+                  :src="siteData.profile.avatarUrl"
+                  :alt="siteData.profile.name"
                   class="h-44 w-44 rounded-full object-cover border-4 border-emerald-500/20 shadow-2xl"
                 />
                 <span class="absolute bottom-2 right-2 rounded-full bg-emerald-500 p-2 text-zinc-950 shadow-md">
@@ -208,6 +212,7 @@ import { courseService, lessonService, categoryService } from '@/services'
 import type { Course, Lesson, Category } from '@/types'
 import CourseCard from '@/components/course/CourseCard.vue'
 import LessonCard from '@/components/lesson/LessonCard.vue'
+import siteData from '@/data'
 
 const isLoading = ref(true)
 const latestLessons = ref<Lesson[]>([])

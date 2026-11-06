@@ -3,28 +3,28 @@
     <!-- Header with Profile Photo -->
     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 border-b border-dark-border pb-10">
       <img
-        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
-        alt="Ahmed Ezz"
+        :src="siteData.profile.avatarUrl"
+        :alt="siteData.profile.name"
         class="h-32 w-32 sm:h-40 sm:w-40 rounded-3xl object-cover border-2 border-emerald-500/30 shadow-xl shadow-emerald-500/5 shrink-0"
       />
       <div class="text-center sm:text-left space-y-3">
         <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-0.5 text-xs font-mono text-emerald-400">
-          Staff / Principal Backend Mindset
+          {{ siteData.profile.badge }}
         </div>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Ahmed Ezz
+          {{ siteData.profile.name }}
         </h1>
         <p class="text-lg font-medium text-emerald-400 font-mono">
-          Backend Software Engineer
+          {{ siteData.profile.title }}
         </p>
         <p class="text-zinc-400 text-sm leading-relaxed max-w-xl">
-          Backend Software Engineer passionate about backend development, Linux, databases, distributed systems, clean architecture, and teaching programming through practical examples.
+          {{ siteData.profile.bio }}
         </p>
 
         <!-- Social & Direct Channels -->
         <div class="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs">
           <a
-            href="https://github.com"
+            :href="siteData.profile.links.github"
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-1.5 rounded-xl border border-dark-border bg-dark-card px-3 py-2 text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
@@ -32,7 +32,7 @@
             <span>GitHub</span>
           </a>
           <a
-            href="https://linkedin.com"
+            :href="siteData.profile.links.linkedin"
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-1.5 rounded-xl border border-dark-border bg-dark-card px-3 py-2 text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
@@ -40,7 +40,15 @@
             <span>LinkedIn</span>
           </a>
           <a
-            href="https://ahmedezz.dev"
+            :href="siteData.profile.links.youtube"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 rounded-xl border border-dark-border bg-dark-card px-3 py-2 text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
+          >
+            <span>YouTube</span>
+          </a>
+          <a
+            :href="siteData.profile.links.portfolio"
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-1.5 rounded-xl border border-dark-border bg-dark-card px-3 py-2 text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
@@ -48,7 +56,7 @@
             <span>Portfolio</span>
           </a>
           <a
-            href="mailto:contact@ahmedezz.dev"
+            :href="`mailto:${siteData.profile.email}`"
             class="flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-emerald-400 hover:bg-emerald-500/20 transition-colors"
           >
             <span>Email</span>
@@ -62,7 +70,7 @@
       <h2 class="text-xl font-bold text-white tracking-tight">Technical Skills & Expertise</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div
-          v-for="skillGroup in skills"
+          v-for="skillGroup in siteData.skills"
           :key="skillGroup.category"
           class="rounded-2xl border border-dark-border bg-dark-card p-5"
         >
@@ -84,7 +92,7 @@
       <h2 class="text-xl font-bold text-white tracking-tight">Experience & Focus</h2>
       <div class="space-y-4">
         <div
-          v-for="exp in experience"
+          v-for="exp in siteData.experience"
           :key="exp.role"
           class="rounded-2xl border border-dark-border bg-dark-card p-6"
         >
@@ -101,45 +109,5 @@
 </template>
 
 <script setup lang="ts">
-const skills = [
-  {
-    category: 'Languages & Runtimes',
-    items: ['Golang (Advanced)', 'C / Modern C++', 'TypeScript / Node.js', 'Bash & Shell Scripting']
-  },
-  {
-    category: 'Distributed Systems',
-    items: ['Raft & Paxos Consensus', 'gRPC & Protocol Buffers', 'Event Streaming & Kafka', 'Distributed Locking & Transactions']
-  },
-  {
-    category: 'Storage & Databases',
-    items: ['PostgreSQL Internals & WAL', 'LSM-Trees & B-Trees', 'Redis & In-Memory Stores', 'Database Partitioning & Sharding']
-  },
-  {
-    category: 'Operating Systems & Linux',
-    items: ['Linux Kernel Subsystems', 'epoll & Non-blocking I/O', 'eBPF Observability', 'cgroups & Namespaces']
-  },
-  {
-    category: 'Architecture & Design',
-    items: ['Clean Architecture & DDD', 'SOLID Principles & Microservices', 'High-Throughput Concurrency', 'Zero-Downtime Migrations']
-  },
-  {
-    category: 'Teaching & Mentorship',
-    items: ['YouTube Video Production', 'System Design Masterclasses', 'Technical Writing & Documentation', 'Interactive Code Labs']
-  }
-]
-
-const experience = [
-  {
-    role: 'Lead Backend Engineer & Educator',
-    company: 'Independent Systems & Educational Platform',
-    period: '2023 - Present',
-    description: 'Designed and built distributed microservices, open-source storage engines, and comprehensive curriculum notes for backend developers worldwide.'
-  },
-  {
-    role: 'Senior Backend Engineer',
-    company: 'Distributed Infrastructure Systems',
-    period: '2020 - 2023',
-    description: 'Specialized in high-load transactional systems, write-ahead logging synchronization, database optimization, and cloud-native container orchestration.'
-  }
-]
+import siteData from '@/data'
 </script>

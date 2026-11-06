@@ -1,0 +1,119 @@
+{
+  "profile": {
+    "name": "Ahmed Ezz",
+    "title": "Backend Software Engineer",
+    "badge": "Staff / Principal Backend Mindset",
+    "bio": "Backend Software Engineer passionate about backend development, Linux, databases, distributed systems, clean architecture, and teaching programming through practical examples.",
+    "shortBio": "Teaching Clean Architecture, Distributed Systems & Low-Level Engineering",
+    "aboutPreview": "I am a Backend Software Engineer passionate about Linux, high-performance databases, scalable distributed consensus, and crafting clean, maintainable systems. Everything on this platform is crafted to provide clear, practical knowledge without fluff.",
+    "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    "email": "contact@ahmedezz.dev",
+    "links": {
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "youtube": "https://youtube.com",
+      "portfolio": "https://ahmedezz.dev"
+    }
+  },
+  "site": {
+    "title": "Ahmed Ezz | Backend Engineer & Educator",
+    "tagline": "Backend Systems",
+    "hero": {
+      "badge": "Production Backend Engineering & Systems",
+      "heading": "Engineering Deep Dives for",
+      "headingHighlight": "Backend Engineers",
+      "description": "Welcome! I'm Ahmed Ezz. This platform provides companion lesson notes, copyable production code, architectural diagrams, and downloadable resources for my YouTube video tutorials."
+    },
+    "terminal": {
+      "user": "engineer@ahmedezz",
+      "whoami": "Ahmed Ezz (Backend Engineer)",
+      "interests": [
+        "Distributed Systems (Raft, Paxos)",
+        "Linux Kernel & Sockets",
+        "PostgreSQL Internals & MVCC",
+        "Clean Architecture in Go"
+      ],
+      "status": "Ready to level up your engineering skills..."
+    },
+    "contact": {
+      "badge": "Direct Inquiries",
+      "title": "Get In Touch",
+      "description": "Have questions about a YouTube video, suggestions for upcoming systems lessons, or want to connect? Reach out below.",
+      "youtubeHandle": "@AhmedEzzDev"
+    },
+    "footer": {
+      "description": "Designed for engineering depth & clean architecture.",
+      "hostingBadge": "Zero-Cost Serverless Ready"
+    }
+  },
+  "skills": [
+    {
+      "category": "Languages & Runtimes",
+      "items": [
+        "Golang (Advanced)",
+        "C / Modern C++",
+        "TypeScript / Node.js",
+        "Bash & Shell Scripting"
+      ]
+    },
+    {
+      "category": "Distributed Systems",
+      "items": [
+        "Raft & Paxos Consensus",
+        "gRPC & Protocol Buffers",
+        "Event Streaming & Kafka",
+        "Distributed Locking & Transactions"
+      ]
+    },
+    {
+      "category": "Storage & Databases",
+      "items": [
+        "PostgreSQL Internals & WAL",
+        "LSM-Trees & B-Trees",
+        "Redis & In-Memory Stores",
+        "Database Partitioning & Sharding"
+      ]
+    },
+    {
+      "category": "Operating Systems & Linux",
+      "items": [
+        "Linux Kernel Subsystems",
+        "epoll & Non-blocking I/O",
+        "eBPF Observability",
+        "cgroups & Namespaces"
+      ]
+    },
+    {
+      "category": "Architecture & Design",
+      "items": [
+        "Clean Architecture & DDD",
+        "SOLID Principles & Microservices",
+        "High-Throughput Concurrency",
+        "Zero-Downtime Migrations"
+      ]
+    },
+    {
+      "category": "Teaching & Mentorship",
+      "items": [
+        "YouTube Video Production",
+        "System Design Masterclasses",
+        "Technical Writing & Documentation",
+        "Interactive Code Labs"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Lead Backend Engineer & Educator",
+      "company": "Independent Systems & Educational Platform",
+      "period": "2023 - Present",
+      "description": "Designed and built distributed microservices, open-source storage engines, and comprehensive curriculum notes for backend developers worldwide."
+    },
+    {
+      "role": "Senior Backend Engineer",
+      "company": "Distributed Infrastructure Systems",
+      "period": "2020 - 2023",
+      "description": "Specialized in high-load transactional systems, write-ahead logging synchronization, database optimization, and cloud-native container orchestration."
+    }
+  ]
+}

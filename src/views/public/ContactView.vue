@@ -1,35 +1,48 @@
 <template>
   <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
     <div>
-      <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">Direct Inquiries</span>
+      <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">{{ siteData.site.contact.badge }}</span>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-        Get In Touch
+        {{ siteData.site.contact.title }}
       </h1>
       <p class="mt-2 text-sm sm:text-base text-zinc-400 leading-relaxed">
-        Have questions about a YouTube video, suggestions for upcoming systems lessons, or want to connect? Reach out below.
+        {{ siteData.site.contact.description }}
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="rounded-2xl border border-dark-border bg-dark-card p-5">
+      <a
+        :href="`mailto:${siteData.profile.email}`"
+        class="rounded-2xl border border-dark-border bg-dark-card p-5 hover:border-emerald-500/40 transition-colors block"
+      >
         <p class="text-xs font-mono text-zinc-500 uppercase">Email</p>
-        <p class="text-sm font-medium text-emerald-400 mt-1">contact@ahmedezz.dev</p>
-      </div>
-      <div class="rounded-2xl border border-dark-border bg-dark-card p-5">
+        <p class="text-sm font-medium text-emerald-400 mt-1 truncate">{{ siteData.profile.email }}</p>
+      </a>
+      <a
+        :href="siteData.profile.links.youtube"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-2xl border border-dark-border bg-dark-card p-5 hover:border-zinc-700 transition-colors block"
+      >
         <p class="text-xs font-mono text-zinc-500 uppercase">YouTube</p>
-        <p class="text-sm font-medium text-zinc-200 mt-1">@AhmedEzzDev</p>
-      </div>
-      <div class="rounded-2xl border border-dark-border bg-dark-card p-5">
+        <p class="text-sm font-medium text-zinc-200 mt-1 truncate">{{ siteData.site.contact.youtubeHandle }}</p>
+      </a>
+      <a
+        :href="siteData.profile.links.github"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-2xl border border-dark-border bg-dark-card p-5 hover:border-zinc-700 transition-colors block"
+      >
         <p class="text-xs font-mono text-zinc-500 uppercase">GitHub</p>
-        <p class="text-sm font-medium text-zinc-200 mt-1">github.com/ahmedezz</p>
-      </div>
+        <p class="text-sm font-medium text-zinc-200 mt-1 truncate">{{ siteData.profile.links.github.replace('https://', '') }}</p>
+      </a>
     </div>
 
     <!-- Contact Form -->
     <div class="rounded-2xl border border-dark-border bg-dark-card p-6 sm:p-8">
       <form @submit.prevent="handleSubmit" class="space-y-4">
         <div v-if="submitted" class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-400">
-          Thank you! Your message has been received. Ahmed will get back to you shortly.
+          Thank you! Your message has been received. {{ siteData.profile.name }} will get back to you shortly.
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -91,6 +104,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import siteData from '@/data'
 
 const name = ref('')
 const email = ref('')
@@ -101,7 +115,6 @@ const submitted = ref(false)
 
 async function handleSubmit() {
   isSubmitting.value = true
-  // Simulate network request
   await new Promise(resolve => setTimeout(resolve, 800))
   isSubmitting.value = false
   submitted.value = true

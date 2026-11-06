@@ -9,10 +9,10 @@
           </div>
           <div>
             <span class="block text-sm font-semibold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-              Ahmed Ezz
+              {{ siteData.profile.name }}
             </span>
             <span class="block text-xs text-zinc-400 font-mono">
-              Backend Systems
+              {{ siteData.site.tagline }}
             </span>
           </div>
         </RouterLink>
@@ -63,7 +63,7 @@
 
         <!-- GitHub External -->
         <a
-          href="https://github.com"
+          :href="siteData.profile.links.github"
           target="_blank"
           rel="noopener noreferrer"
           class="rounded-xl border border-dark-border bg-dark-card p-2 text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
@@ -114,6 +114,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import siteData from '@/data'
 
 defineEmits<{
   (e: 'openSearch'): void

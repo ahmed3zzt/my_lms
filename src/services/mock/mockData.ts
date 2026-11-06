@@ -1,15 +1,16 @@
 import type { Category, Course, Lesson, Tag, Profile } from '@/types'
+import siteData from '@/data'
 
 export const mockProfile: Profile = {
   id: '00000000-0000-0000-0000-000000000001',
-  full_name: 'Ahmed Ezz',
-  title: 'Backend Software Engineer',
-  bio: 'Backend Software Engineer passionate about backend development, Linux, databases, distributed systems, clean architecture, and teaching programming through practical examples.',
-  avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-  github_url: 'https://github.com',
-  linkedin_url: 'https://linkedin.com',
-  portfolio_url: 'https://ahmedezz.dev',
-  email: 'contact@ahmedezz.dev',
+  full_name: siteData.profile.name,
+  title: siteData.profile.title,
+  bio: siteData.profile.bio,
+  avatar_url: siteData.profile.avatarUrl,
+  github_url: siteData.profile.links.github,
+  linkedin_url: siteData.profile.links.linkedin,
+  portfolio_url: siteData.profile.links.portfolio,
+  email: siteData.profile.email,
   created_at: '2025-01-01T00:00:00Z',
   updated_at: '2025-01-01T00:00:00Z'
 }
